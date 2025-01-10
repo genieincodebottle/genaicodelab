@@ -15,6 +15,8 @@ Think of an AI Agent as an LLM with hands and a brain, it can understand, plan a
 
 <img src="images/agents.png" alt="Agents" width="500" height="300"/>
 
+<hr>
+
 ### 📊 Understanding Agency Levels 
 
 In essence, LLMs need [agency](https://huggingface.co/docs/smolagents/conceptual_guides/intro_agents), as agentic systems connect LLMs to the outside world.
@@ -63,6 +65,8 @@ Adapted from above references.
 - Budget constraints
 - Limited tool requirements
 
+<hr>
+
 ### ⚙️ How Do AI Agents Work? 
 
 #### The Operation Cycle
@@ -89,22 +93,22 @@ Adapted from above references.
    - Adapts strategies
    - Improves over time
 
-### 🧠 Memory Systems 
+#### 🧠 Memory Systems 
 
 AI Agents use different types of memory to function effectively:
 
 <img src="images/memory-mgmt.png" alt="Memory Management" width="350" height="300"/>
 
-#### Short-Term Memory
+##### Short-Term Memory
 - **Conversation Memory**: Keeps track of current dialogue
 - **Working Memory**: Handles active tasks and immediate goals
 
-#### Long-Term Memory
+##### Long-Term Memory
 - **Tool Memory**: Records how to use different tools
 - **Episodic Memory**: Stores past experiences
 - **Knowledge Memory**: Maintains learned information
 
-### 🛠️ Tool Integration 
+#### 🛠️ Tool Integration 
 
 AI Agents can interact with various external tools and resources:
 
@@ -114,6 +118,8 @@ AI Agents can interact with various external tools and resources:
 - **Databases**: Store and retrieve data
 - **Code Execution**: Run runtime environments
 - **Custom Tools**: Handle specialized tasks
+
+<hr>
 
 ### 🤖 Types of AI Agents 
 
@@ -139,6 +145,8 @@ AI Agents can interact with various external tools and resources:
 - Detect threats
 - Protect resources
 
+<hr>
+
 ### 💡 Best Practices for Development 
 
 <img src="images/design-principles.png" alt="Design Principles" width="200" height="200"/>
@@ -158,6 +166,8 @@ AI Agents can interact with various external tools and resources:
 - Monitor performance
 - Consider ethical implications
 - Maintain security standards
+
+<hr>
 
 ### 📚 Learn More 
 

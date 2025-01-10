@@ -15,6 +15,7 @@ from pathlib import Path
 def render_workflow_diagram():
     """Render the system workflow diagram."""
     with st.expander("📖 System Workflow", expanded=False):
+        st.markdown("Using LangGraph based Agentic Flow")
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script
         image_path = current_dir.parent.parent / 'images'
@@ -522,7 +523,7 @@ def render_autonomous_multi_agent_medical_analysis():
     """, unsafe_allow_html=True)
 
     st.subheader("Autonomous Agent - Medical Analysis")
-    
+
     # Create main tabs for different sections
     main_tab1, main_tab2 = st.tabs(["New Analysis", "Patient History"])
     

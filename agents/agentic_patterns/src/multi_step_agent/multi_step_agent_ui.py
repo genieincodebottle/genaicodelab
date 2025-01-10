@@ -10,6 +10,7 @@ from pathlib import Path
 def render_workflow_diagram():
     """Render the multi-step agent workflow diagram"""
     with st.expander("📖 System Workflow", expanded=False):
+        st.markdown("Using LangGraph based Agentic Flow")
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script
         image_path = current_dir.parent.parent / 'images'

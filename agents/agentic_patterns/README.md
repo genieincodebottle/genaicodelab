@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="images/header.png" alt="Agents" />
+   <img src="images/header.jpg" alt="Agents" />
 </div>
 
 ### 🤖 What are AI Agents? 

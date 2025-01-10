@@ -41,7 +41,8 @@ Repository for all advanced concepts of GenAI with code.
       pip install -r requirements.txt
       ```
    4. Configure environment variables:
-      a) For Agents: Go to below location
+
+      a) For Agents: Navigate to the following location:
          - agents/agentic_patterns
          - Rename `.env.example` to `.env` and update with appropriate values.
 

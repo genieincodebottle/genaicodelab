@@ -4,32 +4,21 @@ from src.multi_step_agent.utils.constants import SAMPLE_MEDICAL_REPORT
 from src.multi_step_agent.memory.memory import MedicalMemory
 from src.multi_step_agent.workflow.workflow import MultiStepAgent
 
+from PIL import Image
+from pathlib import Path
+
 def render_workflow_diagram():
     """Render the multi-step agent workflow diagram"""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Medical Case Input] --> B[Analysis Phase]
-            B --> C[Action Planning]
-            C --> D[Execute Action]
-            D --> E{Continue?}
-            E -->|Yes| C
-            E -->|No| F[Generate Summary]
-            
-            subgraph "Action Execution"
-                D --> G[Schedule Appointments]
-                D --> H[Order Lab Tests]
-                D --> I[Make Referrals]
-                D --> J[Update Records]
-            end
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#bbf,stroke:#333,stroke-width:2px
-            style C fill:#bbf,stroke:#333,stroke-width:2px
-            style F fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+                
+        routing_diagram = Image.open(image_path/ 'multi_step_agent.png')
+        st.image(routing_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'multi_step_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
 
 def render_usage_instruction():
     with st.expander("📖 Usage Instructions", expanded=False):

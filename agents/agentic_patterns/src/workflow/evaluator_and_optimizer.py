@@ -14,6 +14,9 @@ from src.workflow.utils.prompts import (
 )
 from src.workflow.utils.constants import SAMPLE_MEDICAL_REPORT
 
+from PIL import Image
+from pathlib import Path
+
 def generate_medical_response(
     prompt: str, 
     task: str, 
@@ -201,30 +204,16 @@ def medical_improvement_loop(
 def render_workflow_diagram():
     """Render the evaluator and optimizer workflow diagram with mermaid."""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Medical Case Input] --> B[Initial Analysis]
-            B --> C[Evaluation Phase]
-            C --> D{Meets Requirements?}
-            D -->|No| E[Feedback Generation]
-            E --> F[Improvement Phase]
-            F --> C
-            D -->|Yes| G[Final Analysis]
-            
-            subgraph "Evaluation Loop"
-                C
-                D
-                E
-                F
-            end
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#bbf,stroke:#333,stroke-width:2px
-            style D fill:#ffa,stroke:#333,stroke-width:2px
-            style G fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+                
+        routing_diagram = Image.open(image_path/ 'eval.png')
+        st.image(routing_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'eval_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
+
 
 def render_usage_instructions():
     """Render comprehensive usage instructions for the evaluation analysis."""

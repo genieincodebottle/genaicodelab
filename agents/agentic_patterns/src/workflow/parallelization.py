@@ -13,6 +13,9 @@ from src.utils.llm import llm_call
 from src.workflow.utils.constants import HEALTHCARE_STAKEHOLDERS
 from src.workflow.utils.prompts import MEDICAL_REVIEW_PROMPTS
 
+from PIL import Image
+from pathlib import Path
+
 class ParallelizationType(Enum):
     """Enum for different parallelization types."""
     SECTIONING = "sectioning"  # For stakeholder analysis
@@ -208,37 +211,15 @@ class ParallelProcessor:
 def render_workflow_diagram():
     """Render the parallelization workflow diagram with mermaid."""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Input] --> B{Analysis Type}
-            B -->|Sectioning| C[Stakeholder Analysis]
-            B -->|Voting| D[Content Review]
-            
-            subgraph "Parallel Processing"
-                C --> C1[Stakeholder 1]
-                C --> C2[Stakeholder 2]
-                C --> C3[Stakeholder N]
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
                 
-                D --> D1[Safety Review]
-                D --> D2[Accuracy Review]
-                D --> D3[Compliance Review]
-                D --> D4[Risk Review]
-                D --> D5[Ethics Review]
-            end
-            
-            C1 & C2 & C3 --> E[Sectioning Results]
-            D1 & D2 & D3 & D4 & D5 --> F[Aggregated Review]
-            
-            E & F --> G[Final Report]
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#ffa,stroke:#333,stroke-width:2px
-            style E fill:#bfb,stroke:#333,stroke-width:2px
-            style F fill:#bfb,stroke:#333,stroke-width:2px
-            style G fill:#bbf,stroke:#333,stroke-width:2px
-        ```
-        """)
+        parallel_diagram = Image.open(image_path/ 'parallelization.png')
+        st.image(parallel_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'parallelization_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
 
 def render_usage_instructions():
     """Render comprehensive usage instructions for the parallelization analysis."""

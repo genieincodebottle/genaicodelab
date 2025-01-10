@@ -9,6 +9,9 @@ from src.utils.llm import llm_call
 from src.workflow.utils.constants import SAMPLE_MEDICAL_REPORT
 from src.workflow.utils.prompts import MEDICAL_REPORT_STEPS
 
+from PIL import Image
+from pathlib import Path
+
 def validate_report(report: str, validation_criteria: Dict):
     """
     Validates if the medical report has required components.
@@ -223,28 +226,15 @@ def display_analysis_results(result: str) -> None:
 def render_workflow_diagram() -> None:
     """Render the medical report processing workflow diagram."""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Medical Report Input] --> B[Validation]
-            B --> C[Clinical Summary]
-            C --> D[Risk Assessment]
-            D --> E[Recommendations]
-            E --> F[Follow-up Plan]
-            F --> G[Final Report]
-            
-            subgraph "Report Processing"
-                C
-                D
-                E
-                F
-            end
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#ffa,stroke:#333,stroke-width:2px
-            style G fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+        
+        prompt_chain_diagram = Image.open(image_path/ 'prompt_chaining.png')
+        st.image(prompt_chain_diagram, caption='High Level Architecture')
+        
+        sequence_diagram = Image.open(image_path/ 'prompt_chain_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
 
 def render_usage_instruction() -> None:
     """Render usage instructions for the medical report analysis system."""

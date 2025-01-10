@@ -8,6 +8,9 @@ import streamlit as st
 from src.utils.llm import llm_call, extract_xml
 from src.workflow.utils.constants import MEDICAL_ROUTES, SAMPLE_MEDICAL_QUERIES
 
+from PIL import Image
+from pathlib import Path
+
 # Core Routing Functions
 def analyze_and_route(input: str, routes: Dict[str, str], temperature: float, provider: str, model: str) -> Tuple[str, str, str]:
     """
@@ -153,27 +156,15 @@ def process_routing_request(input: str, routes: Dict[str, str], show_reasoning: 
 def render_workflow_diagram() -> None:
     """Render the query routing workflow diagram."""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Medical Query Input] --> B[Routing Analysis]
-            B --> C{Team Selection}
-            C -->|Urgent Care| D[Emergency Team]
-            C -->|Chronic| E[Primary Care]
-            C -->|Specialized| F[Specialist Team]
-            C -->|Mental Health| G[Psychiatric Team]
-            
-            D --> H[Team Response]
-            E --> H
-            F --> H
-            G --> H
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#bbf,stroke:#333,stroke-width:2px
-            style C fill:#ffa,stroke:#333,stroke-width:2px
-            style H fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+                
+        routing_diagram = Image.open(image_path/ 'routing.png')
+        st.image(routing_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'routing_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
 
 def render_usage_instructions() -> None:
     """Render usage instructions for the query routing system."""

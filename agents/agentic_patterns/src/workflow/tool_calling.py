@@ -11,6 +11,9 @@ from src.utils.tools import execute_medical_tool
 from src.workflow.utils.constants import SAMPLE_MEDICAL_REPORT
 from src.workflow.utils.prompts import MEDICAL_TOOL_PROMPT
 
+from PIL import Image
+from pathlib import Path
+
 # Core Tool Functions
 def validate_tool_data(tool_data: Dict) -> None:
     """
@@ -159,25 +162,15 @@ def analyze_and_execute(
 def render_workflow_diagram() -> None:
     """Render the tool calling workflow diagram."""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Medical Case Input] --> B[Analysis Phase]
-            B --> C[Tool Selection]
-            C --> D{Tool Type}
-            D --> E[Schedule Appointment]
-            D --> F[Order Lab Test]
-            D --> G[Make Referral]
-            D --> H[Update Records]
-            E & F & G & H --> I[Execute Tool]
-            I --> J[Results]
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#bbf,stroke:#333,stroke-width:2px
-            style C fill:#ffa,stroke:#333,stroke-width:2px
-            style J fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+                # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+                
+        routing_diagram = Image.open(image_path/ 'tool_calling.png')
+        st.image(routing_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'tool_calling_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
 
 def render_usage_instruction() -> None:
     """Render usage instructions for the tool calling system."""

@@ -4,45 +4,27 @@ from uuid import uuid4
 from langchain_core.messages import HumanMessage
 
 from src.autonomous_agent.memory.memory import AgentMemory
-
 from src.autonomous_agent.utils.constants import SAMPLE_CASE
 from src.autonomous_agent.workflow.workflow import create_medical_workflow
-
 from src.autonomous_agent.memory.memory_persistence import MemoryPersistence
-
 from src.autonomous_agent.utils.models import PatientHistory
+
+from PIL import Image
+from pathlib import Path
 
 def render_workflow_diagram():
     """Render the system workflow diagram."""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Patient Case Input] --> B[Initial Analysis]
-            B --> C[Task Planning]
-            C --> D[Task Execution]
-            
-            subgraph "Task Execution"
-                D --> E{Task Type}
-                E -->|Lab Tests| F[Order Labs]
-                E -->|Referrals| G[Make Referrals]
-                E -->|Prescriptions| H[Write Prescriptions]
-                F --> I[Update Queue]
-                G --> I
-                H --> I
-                I -->|More Tasks| E
-                I -->|Complete| J[Generate Care Plan]
-            end
-            
-            J --> K[Final Report]
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#bbf,stroke:#333,stroke-width:2px
-            style C fill:#bbf,stroke:#333,stroke-width:2px
-            style J fill:#bfb,stroke:#333,stroke-width:2px
-            style K fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+                
+        routing_diagram = Image.open(image_path/ 'autonomous_agent.png')
+        st.image(routing_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'autonomous_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
+
 
 def render_usage_instruction():
     # Add instructions section
@@ -512,6 +494,33 @@ def run_medical_analysis(
         
 def render_autonomous_multi_agent_medical_analysis():
     """Render the Autonomous Agent Medical Analysis interface."""
+    
+     # First, inject CSS to style the tabs properly
+    st.markdown("""
+        <style>
+            /* Style for the tab container to take full width */
+            .stTabs [data-baseweb="tab-list"] {
+                gap: 0px;
+                width: 100%;
+            }
+            
+            /* Style for the individual tabs to expand fully */
+            .stTabs [data-baseweb="tab"] {
+                height: 50px;
+                white-space: pre-wrap;
+                flex: 1 1 auto;
+                background-color: transparent;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            /* Remove any margin/padding that might affect width */
+            .stTabs [data-baseweb="tab-panel"] {
+                padding: 15px 0px;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.subheader("Autonomous Agent - Medical Analysis")
     
     # Create main tabs for different sections

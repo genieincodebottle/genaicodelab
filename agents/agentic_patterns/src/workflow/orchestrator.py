@@ -11,6 +11,9 @@ from src.utils.llm import llm_call, extract_xml
 from src.workflow.utils.constants import SAMPLE_MEDICAL_REPORT
 from src.workflow.utils.prompts import MEDICAL_ORCHESTRATOR_PROMPT
 
+from PIL import Image
+from pathlib import Path
+
 # Orchestrator Functions
 def get_orchestrator_analysis(medical_case: str, context: Dict) -> Dict:
     """
@@ -371,29 +374,15 @@ def orchestrate_analysis(medical_case: str, context: Optional[Dict] = None) -> D
 def render_workflow_diagram():
     """Render the orchestrator workflow diagram"""
     with st.expander("📖 System Workflow", expanded=False):
-        st.markdown("""
-        ```mermaid
-        graph TB
-            A[Medical Case Input] --> B[Orchestrator Analysis]
-            B --> C[Task Distribution]
-            
-            subgraph "Parallel Processing"
-                C --> D[Clinical Assessment]
-                C --> E[Risk Analysis]
-                C --> F[Treatment Planning]
-                C --> G[Care Coordination]
-            end
-            
-            D & E & F & G --> H[Result Integration]
-            H --> I[Final Report]
-            
-            style A fill:#f9f,stroke:#333,stroke-width:2px
-            style B fill:#bbf,stroke:#333,stroke-width:2px
-            style C fill:#ffa,stroke:#333,stroke-width:2px
-            style H fill:#bfb,stroke:#333,stroke-width:2px
-            style I fill:#bfb,stroke:#333,stroke-width:2px
-        ```
-        """)
+        # Get the relative path to the image
+        current_dir = Path(__file__).parent  # Directory of current script
+        image_path = current_dir.parent.parent / 'images'
+                
+        routing_diagram = Image.open(image_path/ 'orchestrator.png')
+        st.image(routing_diagram, caption='High Level Architecture')
+                
+        sequence_diagram = Image.open(image_path/ 'orchestrator_sequence_diagram.png')
+        st.image(sequence_diagram, caption='Sequence Diagram')
 
 def render_usage_instruction():
     # Add instructions

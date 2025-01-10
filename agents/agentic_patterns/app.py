@@ -13,7 +13,7 @@ from src.autonomous_agent.autonomous_agent_ui import render_autonomous_multi_age
 
 # Set page config as the first command
 st.set_page_config(
-    page_title="Agentic Helthcare System",
+    page_title="Sample Agentic Helthcare App",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -80,7 +80,7 @@ def main():
     # Initialize session state
     reset_session_state()
 
-    st.title("🏥 Healthcare Dashboard")
+    st.title("🏥 Sample Healthcare App")
     
     # Custom CSS
     st.markdown("""

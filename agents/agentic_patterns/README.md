@@ -1,4 +1,6 @@
-## AI Agents - A Practical Approach
+<div align="center">
+   <img src="images/header.png" alt="Agents" />
+</div>
 
 ### 🤖 What are AI Agents? 
 
@@ -6,7 +8,7 @@ AI Agents are the next evolution of Large Language Models (LLMs). Instead of jus
 - Actively solve complex problems
 - Make strategic decisions
 - Use tools and APIs
-- Learn from interactions
+- Learn and adapt from interactions
 - Work autonomously
 
 Think of an AI Agent as an LLM with hands and a brain, it can understand, plan and interact with the real world through tools and APIs.
@@ -35,15 +37,15 @@ Adapted from above references.
 #### Level 1: Basic Agency
 - Can make simple decisions
 - Handles structured tasks
-- Uses basic prompt chaining
+- Uses basic prompt chaining, Parallelization, Routing, Orchestrator, Evaluator & Optimizer etc..
 
 #### Level 2: Intermediate Agency
-- Uses external tools
+- Uses external tools (Tool Calling)
 - Breaks down complex tasks
 - Makes informed decisions
 
 #### Level 3: Advanced Agency
-- Works autonomously
+- Works autonomously (Mult-Step Agent , Autonomous Agent)
 - Handles complex workflows
 - Self-improves over time
 

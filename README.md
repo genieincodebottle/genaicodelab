@@ -1,3 +1,7 @@
+<div align="center">
+<a href="https://www.instagram.com/genieincodebottle/"><img width="200" src="static/images/logo.png"></a>
+</div>
+
 # Advanced Agentic-RAG System
 
 A sophisticated Retrieval-Augmented Generation (RAG) system that implements multiple advanced RAG architectures and strategies. This system combines various RAG approaches to provide enhanced document understanding and question-answering capabilities.

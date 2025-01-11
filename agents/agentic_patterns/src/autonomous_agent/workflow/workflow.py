@@ -1,13 +1,16 @@
-
+import os
 from uuid import uuid4
-from typing import Dict, Any, Optional
-from langchain_core.messages import SystemMessage, HumanMessage
+from typing import Dict, Any, List
+from langchain_core.messages import HumanMessage
+import logging
+from functools import wraps
+from datetime import datetime
 
-import streamlit as st
+# Agent State & Model
+from src.autonomous_agent.memory.memory import AgentState, AgentMemory
+from src.autonomous_agent.memory.memory_persistence import MemoryPersistence
+from src.autonomous_agent.utils.models import PatientHistory
 from langgraph.graph import END, StateGraph
-
-# Agent State
-from src.autonomous_agent.memory.memory import AgentState
 
 # Agents
 from src.autonomous_agent.agents.analysis_agent import analysis_agent
@@ -17,59 +20,79 @@ from src.autonomous_agent.agents.specialist_referral_agent import specialist_ref
 from src.autonomous_agent.agents.prescription_agent import prescription_agent
 from src.autonomous_agent.agents.care_plan_agent import care_plan_agent
 
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Configure logging
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=os.getenv("LOGGING_LEVEL"),
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+def log_execution_time(func):
+    """Decorator to log function execution time."""
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = datetime.now()
+        logger.info(f"Starting execution of {func.__name__}")
+        try:
+            result = func(*args, **kwargs)
+            execution_time = (datetime.now() - start_time).total_seconds()
+            logger.info(f"Completed {func.__name__} in {execution_time:.2f} seconds")
+            return result
+        except Exception as e:
+            logger.error(f"Error in {func.__name__}: {str(e)}")
+            raise
+    return wrapper
+
+class WorkflowError(Exception):
+    """Custom exception for workflow-related errors."""
+    pass
+
+@log_execution_time
 def create_medical_workflow() -> StateGraph:
     """Create and return the medical analysis workflow."""
+    logger.info("Initializing medical workflow")
     workflow = StateGraph(AgentState)
     
     # Add nodes
-    workflow.add_node("analysis", analysis_agent)
-    workflow.add_node("task_planning", task_planning_agent)
-    workflow.add_node("lab_tests", lab_test_agent)
-    workflow.add_node("specialist_referral", specialist_referral_agent)
-    workflow.add_node("prescriptions", prescription_agent)
-    workflow.add_node("care_plan", care_plan_agent)
+    nodes = {
+        "analysis": analysis_agent,
+        "task_planning": task_planning_agent,
+        "lab_tests": lab_test_agent,
+        "specialist_referral": specialist_referral_agent,
+        "prescriptions": prescription_agent,
+        "care_plan": care_plan_agent
+    }
+    
+    for node_name, agent in nodes.items():
+        workflow.add_node(node_name, agent)
+        logger.debug(f"Added node: {node_name}")
     
     # Define edges with conditional routing
     workflow.add_conditional_edges(
         "analysis",
         should_plan,
-        {
-            True: "task_planning",
-            False: END
-        }
+        {True: "task_planning", False: END}
     )
     
-    # Add edges from task_planning
-    workflow.add_conditional_edges(
-        "task_planning",
-        get_next_step,
-        {
-            "lab_tests": "lab_tests",
-            "specialist_referral": "specialist_referral",
-            "prescriptions": "prescriptions",
-            "care_plan": "care_plan",
-            END: END
-        }
-    )
+    # Add edges from task_planning and other nodes
+    edge_config = {
+        "lab_tests": "lab_tests",
+        "specialist_referral": "specialist_referral",
+        "prescriptions": "prescriptions",
+        "care_plan": "care_plan",
+        END: END
+    }
     
-    # Add edges from other nodes
-    for node in ["lab_tests", "specialist_referral", "prescriptions"]:
-        workflow.add_conditional_edges(
-            node,
-            get_next_step,
-            {
-                "lab_tests": "lab_tests",
-                "specialist_referral": "specialist_referral",
-                "prescriptions": "prescriptions",
-                "care_plan": "care_plan",
-                END: END
-            }
-        )
+    nodes_with_conditional_edges = ["task_planning", "lab_tests", "specialist_referral", "prescriptions"]
+    for node in nodes_with_conditional_edges:
+        workflow.add_conditional_edges(node, get_next_step, edge_config)
     
-    # Add edge from care_plan to END
     workflow.add_edge("care_plan", END)
-    
-    # Set the entry point
     workflow.set_entry_point("analysis")
     
     return workflow.compile()
@@ -84,30 +107,23 @@ def get_next_step(state: AgentState) -> str:
     memory = state["memory"]
     show_reasoning = state["metadata"].get("show_reasoning", False)
     
-    if show_reasoning:
-        st.write("Current task queue:", data.get("task_queue"))
-        st.write("Completed tasks:", data.get("completed_tasks", []))
-        st.write("Current episode state:", memory.working_memory.current_state)
+    logger.debug(f"Current task queue: {data.get('task_queue')}")
+    logger.debug(f"Completed tasks: {data.get('completed_tasks', [])}")
     
-    # Check if there are tasks to process
     if not data.get("task_queue"):
-        if show_reasoning:
-            st.write("No tasks in queue")
-        if data.get("completed_tasks"):
-            if show_reasoning:
-                st.write("Moving to care plan")
-            return "care_plan"
-        return END
+        logger.info("No tasks in queue")
+        return "care_plan" if data.get("completed_tasks") else END
     
-    # Get the current task
-    current_task = next(
-        task for task in data["tasks"]
-        if task.id == data["task_queue"][0]
-    )
+    try:
+        current_task = next(
+            task for task in data["tasks"]
+            if task.id == data["task_queue"][0]
+        )
+    except StopIteration:
+        logger.error("Could not find current task in task list")
+        raise WorkflowError("Task queue and task list mismatch")
     
-    if show_reasoning:
-        st.write(f"Current task: {current_task.id}")
-        st.write(f"Required tools: {current_task.required_tools}")
+    logger.info(f"Processing task: {current_task.id}")
     
     # Record decision point in memory
     memory.add_decision_point(
@@ -118,16 +134,14 @@ def get_next_step(state: AgentState) -> str:
         confidence=0.8
     )
     
-    # Check dependencies with memory context
+    # Check dependencies
     if current_task.dependencies:
         pending_deps = [
             dep for dep in current_task.dependencies
             if dep not in data.get("completed_tasks", [])
         ]
         if pending_deps:
-            if show_reasoning:
-                st.write(f"Task {current_task.id} has pending dependencies: {pending_deps}")
-            # Move task to end of queue
+            logger.info(f"Task {current_task.id} has pending dependencies: {pending_deps}")
             task_id = data["task_queue"].pop(0)
             data["task_queue"].append(task_id)
             return get_next_step(state)
@@ -135,22 +149,101 @@ def get_next_step(state: AgentState) -> str:
     # Route based on required tools
     tools = current_task.required_tools
     if not tools:
-        if show_reasoning:
-            st.write(f"No tools required for task {current_task.id}")
+        logger.info(f"No tools required for task {current_task.id}")
         data["task_queue"].pop(0)
         data["completed_tasks"].append(current_task.id)
         return get_next_step(state)
     
+    tool_routing = {
+        "order_lab_test": "lab_tests",
+        "refer_specialist": "specialist_referral",
+        "prescribe_medication": "prescriptions"
+    }
+    
     for tool in tools:
-        if tool == "order_lab_test":
-            return "lab_tests"
-        elif tool == "refer_specialist":
-            return "specialist_referral"
-        elif tool == "prescribe_medication":
-            return "prescriptions"
+        if tool in tool_routing:
+            return tool_routing[tool]
     
     # If no specific routing, complete the task
     data["task_queue"].pop(0)
     data["completed_tasks"].append(current_task.id)
     
     return get_next_step(state)
+
+@log_execution_time
+def run_autonomous_medical_analysis(
+    patient_data: Dict[str, Any],
+    show_reasoning: bool = False,
+    use_memory: bool = True
+) -> Dict[str, Any]:
+    """Run the medical analysis workflow."""
+    
+    workflow = create_medical_workflow()
+    episode_id = str(uuid4())
+    memory = None
+    persistence = None
+    
+    logger.info(f"Starting medical analysis for patient {patient_data['patient_id']}")
+    
+    try:
+        # Initialize memory
+        memory = AgentMemory()
+        memory.working_memory.episode_id = episode_id
+        memory.initialize_patient_history(patient_data["patient_id"])
+        
+        if use_memory:
+            try:
+                persistence = MemoryPersistence()
+                existing_history = persistence.load_patient_history(patient_data["patient_id"])
+                if existing_history:
+                    memory._patient_history = PatientHistory(**existing_history)
+                    logger.info("Loaded existing patient history")
+                
+                previous_episodes = persistence.load_episodes(patient_data["patient_id"])
+                if previous_episodes:
+                    memory.episodic_memory.extend(previous_episodes)
+                    logger.info(f"Loaded {len(previous_episodes)} previous episodes")
+                    
+            except Exception as e:
+                logger.warning(f"Memory persistence error: {str(e)}. Continuing with temporary memory.")
+
+        initial_state = {
+            "messages": [
+                HumanMessage(
+                    content="Analyze patient data and create care plan by taking autonomous decision to call different agents.",
+                )
+            ],
+            "data": {
+                "patient_data": patient_data,
+                "completed_tasks": [],
+            },
+            "metadata": {
+                "show_reasoning": show_reasoning,
+            },
+            "memory": memory
+        }
+        
+        final_state = workflow.invoke(initial_state)
+
+        # Save episode to memory if enabled
+        if use_memory and persistence is not None:
+            try:
+                memory.save_to_episodic_memory()
+                persistence.save_patient_history(
+                    patient_data["patient_id"],
+                    memory.patient_history.model_dump() if memory.patient_history else {}
+                )
+                persistence.save_episode(
+                    episode_id,
+                    patient_data["patient_id"],
+                    memory.working_memory.model_dump()
+                )
+                logger.info("Successfully saved episode to persistent memory")
+            except Exception as e:
+                logger.error(f"Failed to save to persistent memory: {str(e)}")
+
+        return final_state
+        
+    except Exception as e:
+        logger.error(f"Critical error in medical analysis: {str(e)}")
+        raise WorkflowError(f"Medical analysis failed: {str(e)}")

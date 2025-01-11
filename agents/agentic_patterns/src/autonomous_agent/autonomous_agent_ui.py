@@ -1,13 +1,9 @@
 import streamlit as st
 from typing import Dict, Any
-from uuid import uuid4
-from langchain_core.messages import HumanMessage
 
-from src.autonomous_agent.memory.memory import AgentMemory
 from src.autonomous_agent.utils.constants import SAMPLE_CASE
-from src.autonomous_agent.workflow.workflow import create_medical_workflow
+from src.autonomous_agent.workflow.workflow import run_autonomous_medical_analysis
 from src.autonomous_agent.memory.memory_persistence import MemoryPersistence
-from src.autonomous_agent.utils.models import PatientHistory
 
 from PIL import Image
 from pathlib import Path
@@ -419,80 +415,6 @@ def display_analysis_results(final_state: Dict[str, Any]):
         else:
             st.warning("No care plan has been generated yet.")
 
-def run_medical_analysis(
-    patient_data: Dict[str, Any],
-    show_reasoning: bool = False,
-    use_memory: bool = True
-) -> Dict[str, Any]:
-    """Run the medical analysis workflow."""
-    
-    workflow = create_medical_workflow()
-    episode_id = str(uuid4())
-    memory = None
-    persistence = None
-    
-    try:
-        # Initialize memory
-        memory = AgentMemory()
-        memory.working_memory.episode_id = episode_id
-        memory.initialize_patient_history(patient_data["patient_id"])
-        
-        if use_memory:
-            try:
-                # Memory Persistence
-                persistence = MemoryPersistence()
-                # Try to load existing patient history
-                existing_history = persistence.load_patient_history(patient_data["patient_id"])
-                if existing_history:
-                    memory._patient_history = PatientHistory(**existing_history)
-                # Load previous episodes if any
-                previous_episodes = persistence.load_episodes(patient_data["patient_id"])
-                if previous_episodes:
-                    memory.episodic_memory.extend(previous_episodes)
-            except Exception as e:
-                st.warning(f"Unable to load persistent memory: {str(e)}. Continuing with temporary memory.")
-
-        initial_state = {
-            "messages": [
-                HumanMessage(
-                    content="Analyze patient data and create care plan by taking autonomous decision to call different agents.",
-                )
-            ],
-            "data": {
-                "patient_data": patient_data,
-                "completed_tasks": [],
-            },
-            "metadata": {
-                "show_reasoning": show_reasoning,
-            },
-            "memory": memory
-        }
-        
-        final_state = workflow.invoke(initial_state)
-
-        # Save episode to memory if enabled and memory persistence was successful
-        if use_memory and persistence is not None:
-            try:
-                memory.save_to_episodic_memory()
-                # Persist memory state
-                persistence.save_patient_history(
-                    patient_data["patient_id"],
-                    memory.patient_history.model_dump() if memory.patient_history else {}
-                )
-                persistence.save_episode(
-                    episode_id,
-                    patient_data["patient_id"],
-                    memory.working_memory.model_dump()
-                )
-            except Exception as e:
-                st.warning(f"Unable to save to persistent memory: {str(e)}")
-
-        return final_state
-        
-    except Exception as e:
-        st.error(f"Error in medical analysis: {str(e)}")
-        raise  # Re-raise the exception for the outer error handler
-        
 def render_autonomous_multi_agent_medical_analysis():
     """Render the Autonomous Agent Medical Analysis interface."""
     
@@ -545,7 +467,7 @@ def render_autonomous_multi_agent_medical_analysis():
                     
                     # Run the analysis
                     with st.spinner():
-                        final_state = run_medical_analysis(
+                        final_state = run_autonomous_medical_analysis(
                             patient_data={
                                 "patient_id": patient_id,
                                 "medical_case": medical_case

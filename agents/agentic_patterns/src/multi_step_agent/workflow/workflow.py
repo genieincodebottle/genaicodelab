@@ -1,12 +1,24 @@
+import os
 from typing import Dict, Tuple, Optional
 import json
-
-import streamlit as st
+import logging
 
 from src.multi_step_agent.memory.memory import MedicalMemory
 from src.multi_step_agent.utils.prompts import MULTI_STEP_AGENT_PROMPT
 from src.utils.llm import llm_call, extract_xml
 from src.utils.tools import execute_medical_tool
+
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Configure logging
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=os.getenv("LOGGING_LEVEL"),
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 class MultiStepAgent:
     """Agent that can execute multi-step medical workflows"""
@@ -50,8 +62,8 @@ class MultiStepAgent:
             should_continue = extract_xml(response, "continue").strip().upper() == "YES"
             
             if show_reasoning:
-                st.markdown("### Step Analysis")
-                st.write(analysis)
+                logger.info("Step Analysis")
+                logger.info(analysis)
             
             next_action = None
             if should_continue:
@@ -66,7 +78,7 @@ class MultiStepAgent:
             return should_continue, analysis, next_action
             
         except Exception as e:
-            st.error(f"Error in continuation logic: {str(e)}")
+            logger.error(f"Error in continuation logic: {str(e)}")
             return False, str(e), None
             
     def execute_workflow(self, task: str, patient_id: str, show_reasoning: bool = True) -> MedicalMemory:
@@ -75,25 +87,22 @@ class MultiStepAgent:
         max_steps = 10
         step_count = 0
         
-        progress_bar = st.progress(0)
-        status_text = st.empty()
+        logger.info(f"Starting step {step_count + 1}/{max_steps}")
         
         while step_count < max_steps:
             if show_reasoning:
-                status_text.text(f"Processing step {step_count + 1}/{max_steps}...")
-                progress_bar.progress((step_count + 1) / max_steps)
+                logger.info(f"Processing step {step_count + 1}/{max_steps}")
             
             should_continue, analysis, next_action = self.should_continue(memory, show_reasoning)
             
             if not should_continue or next_action is None:
-                status_text.text("Workflow complete!")
-                progress_bar.progress(1.0)
+                logger.info("Workflow complete!")
                 break
                 
             try:
                 if show_reasoning:
-                    st.markdown("### Executing Next Action")
-                    st.json(next_action)
+                    logger.info("Executing Next Action")
+                    logger.info(json.dumps(next_action))
                 
                 next_action["args"]["patient_id"] = patient_id
                 result = execute_medical_tool(next_action["function"], next_action["args"])
@@ -105,15 +114,15 @@ class MultiStepAgent:
                 )
                 
                 if show_reasoning:
-                    st.success(f"Action completed: {result}")
+                    logger.info(f"Action completed: {result}")
                     
                 step_count += 1
                 
             except Exception as e:
-                st.error(f"Error executing action: {str(e)}")
+                logger.error(f"Error executing action: {str(e)}")
                 break
                 
         if step_count >= max_steps:
-            st.warning("Workflow reached maximum number of steps")
+            logger.warning("Workflow reached maximum number of steps")
             
         return memory

@@ -14,9 +14,11 @@ Repository for all advanced concepts of GenAI with code.
 ### 🌟 Overview
 
 - #### [Agents](./agents/) 
-- #### Advanced Prompt Engineering
 - #### Advanced Agentic-RAG
+- #### Cache Augumented Generation
 - #### Multimodal RAG
+- #### Advanced Prompt Engineering
+- #### Prompt Guard & Prompt Caching
 - and more ...
 
 ### ⚙️ Setup Instructions

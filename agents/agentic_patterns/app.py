@@ -14,6 +14,7 @@ from src.autonomous_agent.autonomous_agent_ui import render_autonomous_multi_age
 # Set page config as the first command
 st.set_page_config(
     page_title="Sample Agentic Helthcare App",
+    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )

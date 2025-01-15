@@ -10,7 +10,6 @@ from src.workflow.orchestrator import render_orchestrator_medical_analysis
 from src.workflow.tool_calling import render_tool_calling_medical_analysis
 from src.multi_step_agent.multi_step_agent_ui import render_multi_step_agent_medical_analysis
 from src.autonomous_agent.autonomous_agent_ui import render_autonomous_multi_agent_medical_analysis
-from src.crew_ai_autonomous_agent.crew_ai_ui import render_crew_ai_ui
 
 # Set page config as the first command
 st.set_page_config(
@@ -168,8 +167,6 @@ def main():
             render_multi_step_agent_medical_analysis()
         elif selected_workflow == "Autonomous Multi Agent":
             render_autonomous_multi_agent_medical_analysis()
-        elif selected_workflow == "CrewAI Multi Agent":
-            render_crew_ai_ui()
 
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")

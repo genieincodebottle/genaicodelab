@@ -13,7 +13,8 @@ Repository for all advanced concepts of GenAI with code.
 
 ### 🌟 Overview
 
-- #### [Agents](./agents/) 
+- #### [Agents](./agents/)
+- #### [Your AI Chat Analytics](./your_ai_chat_analytics/)  
 - #### Advanced Agentic-RAG
 - #### Cache Augumented Generation
 - #### Multimodal RAG

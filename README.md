@@ -53,7 +53,7 @@ Repository for all advanced concepts of GenAI with code.
             - For **GOOGLE_API_KEY** follow this -> https://ai.google.dev/gemini-api/docs/api-key
             - For **ANTHROPIC_API_KEY** follow this -> https://console.anthropic.com/settings/keys
 
-#### Running the Application
+### 💻 Running the Application
 To start the application, run:
 ```bash
 streamlit run app.py

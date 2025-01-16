@@ -14,6 +14,9 @@ Repository for all advanced concepts of GenAI with code.
 ### 🌟 Overview
 
 - #### [Agents](./agents/)
+   - ##### [Agentic Patterns](./agents/agentic_patterns/)
+   - ##### [CrewAI Usecase](./agents/crewai_usecases/)
+   - ##### [LangGraph Usecase](./agents/langraph_usecases/)
 - #### [Your AI Chat Analytics](./your_ai_chat_analytics/)  
 - #### Advanced Agentic-RAG
 - #### Cache Augumented Generation

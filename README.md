@@ -13,13 +13,15 @@ Repository for all advanced concepts of GenAI with code.
 
 ### 🌟 Overview
 
+Each link includes its own README file with installation and setup instructions, allowing you to run it independently on your system.
+
 - #### [Agents](./agents/)
    - ##### [Agentic Patterns](./agents/agentic_patterns/)
    - ##### [CrewAI Usecase](./agents/crewai_usecases/)
    - ##### [LangGraph Usecase](./agents/langraph_usecases/)
+- #### [Cache Augumented Generation](./cache_augumeted_generation/)
 - #### [Your AI Chat Analytics](./your_ai_chat_analytics/)  
 - #### Advanced Agentic-RAG
-- #### Cache Augumented Generation
 - #### Multimodal RAG
 - #### Advanced Prompt Engineering
 - #### Prompt Guard & Prompt Caching

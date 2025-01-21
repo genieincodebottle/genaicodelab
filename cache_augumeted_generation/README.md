@@ -46,6 +46,13 @@ large datasets.
       pip install torch --index-url https://download.pytorch.org/whl/cu118
       pip install -r requirements.txt
       ```
+   4. Rename `.env.example` to `.env`
+   
+   5. Get your Hugging Face token:
+      * Visit [Hugging Face Tokens Page](https://huggingface.co/settings/tokens)
+      * Create a new token with read access
+   
+   6. Copy the token to `HF_TOKEN` in your .env file
 
 ### 💻 Running the Application
 To start the application, run:

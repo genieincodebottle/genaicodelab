@@ -16,20 +16,27 @@ Cache-Augmented Generation (CAG) addresses these by preloading relevant data int
 model's context, leveraging modern LLMs' extended context windows and caching runtime parameters. 
 This eliminates real-time retrieval during inference, enabling direct response generation.
 
+<hr>
+
 ### ✨ Advantages of CAG
 * **Reduced Latency:** Faster inference by removing real-time retrieval.
 * **Improved Reliability:** Avoids retrieval errors and ensures context relevance.
 * **Simplified Design:** Offers a streamlined, low-complexity alternative to RAG with comparable or better performance.
+
+<hr>
 
 ### ⚠️ Limitations of CAG
 * **Knowledge Size Limits:** Requires fitting all relevant data into the context window, unsuitable for extremely 
 large datasets.
 * **Context Length Issues:** Performance may degrade with very long contexts.
 
+<hr>
+
 ### 📚 References
 * [GitHub](https://github.com/hhhuang/CAG/tree/main)
 * [Research Paper](https://arxiv.org/abs/2412.15605)
 
+<hr>
 
 ### ⚙️ Setup Instructions
 
@@ -60,6 +67,8 @@ large datasets.
       * Create a new token with read access
    
    6. Copy the token to `HF_TOKEN` in your .env file
+
+<hr>
 
 ### 💻 Running the Application
 To start the application, run:

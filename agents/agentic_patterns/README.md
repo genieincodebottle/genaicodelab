@@ -2,10 +2,10 @@
    <img src="images/header.png" alt="Agents" />
 </div>
 
-- [⚙️ **Setup Instructions**](#-setup-instructions)
+- [⚙️ **Setup Instructions**](#%EF%B8%8F-setup-instructions)
 - [🤖 What are AI Agents?](#-what-are-ai-agents)
 - [📊 Understanding Agency Levels](#-understanding-agency-levels)
-- [⚙️ How Do AI Agents Work?](#-how-do-ai-agents-work)
+- [⚙️ How Do AI Agents Work?](#%EF%B8%8F-how-do-ai-agents-work)
 - [🎯 When to Use Each Agency Level? ](#-when-to-use-each-agency-level)
 - [🌐 Types of AI Agents](#-types-of-ai-agents)
 - [💡 Best Practices for Development](#-best-practices-for-development)

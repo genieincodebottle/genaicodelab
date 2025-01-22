@@ -9,6 +9,9 @@
 - [⚠️ Limitations of CAG](#-limitations-of-cag)
 - [📚 References ](#-references)
 
+
+<a href="https://colab.research.google.com/drive/1-5MgFfzNtcFMCIv-VEPXBrp4hJq9v6-R?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+
 ### 🔍 Overview
 Retrieval-Augmented Generation (RAG) enhances language models by integrating external 
 knowledge but faces challenges like retrieval latency, errors, and system complexity. 

@@ -192,7 +192,7 @@ AI Agents can interact with various external tools and resources:
    1. Clone the repository:
       ```bash
       git clone https://github.com/genieincodebottle/genaicodelab.git
-      cd genaicodelab/agentic_patterns
+      cd genaicodelab/agents/agentic_patterns
       ```
    2. Create a virtual environment:
       ```bash

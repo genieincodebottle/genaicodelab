@@ -36,8 +36,8 @@ large datasets.
 <hr>
 
 ### 📚 References
-* [GitHub](https://github.com/hhhuang/CAG/tree/main)
 * [Research Paper](https://arxiv.org/abs/2412.15605)
+* https://github.com/hhhuang/CAG/tree/main
 
 <hr>
 

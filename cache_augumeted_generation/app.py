@@ -42,7 +42,24 @@ def render_workflow_diagram():
     with st.expander("📖 Overview & System Workflow", expanded=False):
         st.markdown("""
         #### Overview
-        Cache-Augmented Generation (CAG) enhances language models by preloading data into the model's context.
+                    
+        Cache Augmented Generation (CAG) is an new paradigm for enhancing language model performance 
+        that eliminates the need for real-time retrieval by preloading relevant documents into the model's 
+        extended context and precomputing key-value (KV) caches. Unlike traditional Retrieval Augmented Generation (RAG), 
+        CAG streamlines the system architecture by encoding documents into a KV cache that captures the model's inference 
+        state and storing it for reuse, enabling retrieval-free question answering.
+        
+        The key characteristics that define CAG include:
+
+        * Preloading and caching of context rather than real-time retrieval
+        * Use of precomputed KV caches that store the model's inference state
+        * A simplified architecture that removes the separate retrieval pipeline
+        * A cache reset mechanism that truncates appended tokens to maintain performance
+
+        This approach offers significant advantages over traditional RAG systems, including reduced inference time 
+        (from 94.35 seconds to 2.33 seconds on large HotPotQA datasets), improved accuracy (achieving higher BERT scores), 
+        and simplified system architecture. CAG is particularly effective when working with manageable knowledge bases 
+        that can fit within the model's extended context window and in scenarios where low latency is critical.
         
         #### Advantages
         * Reduced Latency
@@ -52,6 +69,10 @@ def render_workflow_diagram():
         #### Limitations
         * Knowledge Size Limits
         * Context Length Issues
+                    
+        #### References
+        * [Research Paper](https://arxiv.org/abs/2412.15605)
+        * https://github.com/hhhuang/CAG
         """)
         
         image_path = Path(__file__).parent / 'images'

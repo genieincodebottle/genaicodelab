@@ -2,6 +2,17 @@
    <img src="images/header.png" alt="Agents" />
 </div>
 
+- [⚙️ **Setup Instructions**](#-setup-instructions)
+- [🤖 What are AI Agents?](#-what-are-ai-agents)
+- [📊 Understanding Agency Levels](#-understanding-agency-levels)
+- [⚙️ How Do AI Agents Work?](#-how-do-ai-agents-work)
+- [🎯 When to Use Each Agency Level? ](#-when-to-use-each-agency-level)
+- [🌐 Types of AI Agents](#-types-of-ai-agents)
+- [💡 Best Practices for Development](#-best-practices-for-development)
+
+- [💻 Running the Application](#-running-the-application)
+- [📚 Learn More](#-learn-more)
+
 ### 🤖 What are AI Agents? 
 
 AI Agents are the next evolution of Large Language Models (LLMs). Instead of just processing text, they can:
@@ -50,6 +61,8 @@ Adapted from above references.
 - Works autonomously (Mult-Step Agent , Autonomous Agent)
 - Handles complex workflows
 - Self-improves over time
+
+<hr>
 
 ### 🎯 When to Use Each Agency Level? 
 
@@ -121,7 +134,7 @@ AI Agents can interact with various external tools and resources:
 
 <hr>
 
-### 🤖 Types of AI Agents 
+### 🌐 Types of AI Agents 
 
 <img src="images/type-of-agents.png" alt="Types of Agents" width="400" height="450"/>
 
@@ -166,6 +179,43 @@ AI Agents can interact with various external tools and resources:
 - Monitor performance
 - Consider ethical implications
 - Maintain security standards
+
+<hr>
+
+### ⚙️ Setup Instructions
+
+- #### Prerequisites
+   - Python 3.9 or higher
+   - pip (Python package installer)
+
+- #### Installation
+   1. Clone the repository:
+      ```bash
+      git clone https://github.com/genieincodebottle/genaicodelab.git
+      cd genaicodelab/agentic_patterns
+      ```
+   2. Create a virtual environment:
+      ```bash
+      python -m venv venv
+      venv\Scripts\activate # On Linux -> source venv/bin/activate
+      ```
+   3. Install dependencies:
+      ```bash
+      pip install -r requirements.txt
+      ```
+   4. Rename `.env.example` to `.env` and update with appropriate values.
+      - For **GROQ_API_KEY** follow this -> https://console.groq.com/keys
+      - For **OPENAI_API_KEY** follow this -> https://platform.openai.com/api-keys
+      - For **GOOGLE_API_KEY** follow this -> https://ai.google.dev/gemini-api/docs/api-key
+      - For **ANTHROPIC_API_KEY** follow this -> https://console.anthropic.com/settings/keys
+<
+hr>
+
+### 💻 Running the Application
+To start the application, run:
+```bash
+streamlit run app.py
+```
 
 <hr>
 

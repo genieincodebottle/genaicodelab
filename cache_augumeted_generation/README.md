@@ -2,6 +2,13 @@
    <img src="images/header.png" alt="Cache-Augmented Generation"/>
 </div>
 
+- [⚙️ **Setup Instructions**](#%EF%B8%8F-setup-instructions)
+- [💻 Running the Application](#-running-the-application)
+- [🔍 Overview](#-overview)
+- [✨ Advantages of CAG](#-advantages-of-cag)
+- [⚠️ Limitations of CAG](#-limitations-of-cag)
+- [📚 References ](#-references)
+
 ### 🔍 Overview
 Retrieval-Augmented Generation (RAG) enhances language models by integrating external 
 knowledge but faces challenges like retrieval latency, errors, and system complexity. 

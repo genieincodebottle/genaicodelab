@@ -128,7 +128,11 @@ def main():
     # Sidebar configuration
     with st.sidebar:
         st.subheader("Model Configuration")
-        model_name = st.text_input("Model Name", "meta-llama/Llama-3.2-1B-Instruct")
+        model_name = st.selectbox(
+                        "Model Name",
+                        ["meta-llama/Llama-3.2-1B-Instruct"],
+                        key='model_name'
+                     )
         use_cache = st.checkbox("Use CAG (KV Cache)", value=True)
         
         quantized = False

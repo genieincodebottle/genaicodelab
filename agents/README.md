@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="images/header.png" alt="Agents" />
+   <img src="../images/header.png" alt="Agents" />
 </div>
 
 - [🤖 What are AI Agents?](#-what-are-ai-agents)
@@ -21,7 +21,7 @@ AI Agents are the next evolution of Large Language Models (LLMs). Instead of jus
 
 Think of an AI Agent as an LLM with hands and a brain, it can understand, plan and interact with the real world through tools and APIs.
 
-<img src="images/agents.png" alt="Agents" width="500" height="300"/>
+<img src="../images/agents.png" alt="Agents" width="500" height="300"/>
 
 <hr>
 
@@ -37,7 +37,7 @@ Agency refers to how independently an AI system can operate. Here's what each le
 
 Adapted from above references.
 
-<img src="images/agency-spectrum.png" alt="Agency Spectrum" width="650" height="400"/>
+<img src="../images/agency-spectrum.png" alt="Agency Spectrum" width="650" height="400"/>
 
 #### Level 0: No Agency
 - Basic text processing
@@ -81,7 +81,7 @@ Adapted from above references.
 
 #### The Operation Cycle
 
-<img src="images/operational-cycle.png" alt="Operation Cycle" width="700" height="400"/>
+<img src="../images/operational-cycle.png" alt="Operation Cycle" width="700" height="400"/>
 
 1. **Perceive** 👀
    - Understands context
@@ -107,7 +107,7 @@ Adapted from above references.
 
 AI Agents use different types of memory to function effectively:
 
-<img src="images/memory-mgmt.png" alt="Memory Management" width="350" height="300"/>
+<img src="../images/memory-mgmt.png" alt="Memory Management" width="350" height="300"/>
 
 ##### Short-Term Memory
 - **Conversation Memory**: Keeps track of current dialogue
@@ -122,7 +122,7 @@ AI Agents use different types of memory to function effectively:
 
 AI Agents can interact with various external tools and resources:
 
-<img src="images/tool-integration.png" alt="Available Resources" width="300" height="300"/>
+<img src="../images/tool-integration.png" alt="Available Resources" width="300" height="300"/>
 
 - **APIs**: Connect to external services
 - **Databases**: Store and retrieve data
@@ -133,7 +133,7 @@ AI Agents can interact with various external tools and resources:
 
 ### 🌐 Types of AI Agents 
 
-<img src="images/type-of-agents.png" alt="Types of Agents" width="400" height="450"/>
+<img src="../images/type-of-agents.png" alt="Types of Agents" width="400" height="450"/>
 
 #### Development Agents
 - Write and review code
@@ -159,7 +159,7 @@ AI Agents can interact with various external tools and resources:
 
 ### 💡 Best Practices for Development 
 
-<img src="images/design-principles.png" alt="Design Principles" width="200" height="200"/>
+<img src="../images/design-principles.png" alt="Design Principles" width="200" height="200"/>
 
 #### 1. Start Small, Scale Smart
 - Begin with minimal features
@@ -181,6 +181,7 @@ AI Agents can interact with various external tools and resources:
 
 ### 📚 Learn More 
 
-- [Huggingface Agent Guide](https://huggingface.co/docs/smolagents/conceptual_guides/intro_agents)
 - [Anthropic's Guide to Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)
+- [Huggingface Agent Guide-Smolagents](https://huggingface.co/docs/smolagents/conceptual_guides/intro_agents)
 - [Chip Huyen's Blog on Agents](https://huyenchip.com//2025/01/07/agents.html)
+- [Google’s Agent Whitepaper](https://www.kaggle.com/whitepaper-agents)

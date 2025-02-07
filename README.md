@@ -16,7 +16,7 @@ Repository for all advanced concepts of GenAI with code.
 Each link includes its own README file with installation and setup instructions, allowing you to run it independently on your system.
 
 - #### [Agents](./agents/)
-   - ##### [Agentic Patterns](./agents/agentic_patterns/)
+   - ##### [Agentic Workflow](./agents/agentic_workflow/)
    - ##### [CrewAI Usecase](./agents/crewai_usecases/)
    - ##### [LangGraph Usecase](./agents/langraph_usecases/)
 - #### [Cache Augumented Generation](./cache_augumeted_generation/)
@@ -33,38 +33,12 @@ Each link includes its own README file with installation and setup instructions,
    - Python 3.9 or higher
    - pip (Python package installer)
 
-- #### Installation
-   1. Clone the repository:
-      ```bash
+- #### Clone the repository:
+      
+   ```bash
       git clone https://github.com/genieincodebottle/genaicodelab.git
       cd genaicodelab
-      ```
-   2. Create a virtual environment:
-      ```bash
-      python -m venv venv
-      venv\Scripts\activate # On Linux -> source venv/bin/activate
-      ```
-   3. Install dependencies:
-      ```bash
-      pip install -r requirements.txt
-      ```
-   4. Configure environment variables:
-
-      a) For Agents: Navigate to the following location:
-         - agents/agentic_patterns
-         - Rename `.env.example` to `.env` and update with appropriate values.
-            - For **GROQ_API_KEY** follow this -> https://console.groq.com/keys
-            - For **OPENAI_API_KEY** follow this -> https://platform.openai.com/api-keys
-            - For **GOOGLE_API_KEY** follow this -> https://ai.google.dev/gemini-api/docs/api-key
-            - For **ANTHROPIC_API_KEY** follow this -> https://console.anthropic.com/settings/keys
-
-### 💻 Running the Application
-To start the application, run:
-```bash
-streamlit run app.py
-```
-
-<img src="static/images/main_ui.png" alt="Main UI" width="700" height="300"/>
+   ```
 
 ### 🤝 Contributing
 Contributions are welcome! Follow these steps to contribute:

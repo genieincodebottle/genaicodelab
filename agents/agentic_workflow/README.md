@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="images/header.png" alt="AI"/>
+   <img src="images/header.png" alt="Agents" />
 </div>
 
 ### ⚙️ Setup Instructions
@@ -12,7 +12,7 @@
    1. Clone the repository:
       ```bash
       git clone https://github.com/genieincodebottle/genaicodelab.git
-      cd genaicodelab/your_ai_chat_analytics
+      cd genaicodelab/agentic_workflow
       ```
    2. Create a virtual environment:
       ```bash
@@ -23,13 +23,16 @@
       ```bash
       pip install -r requirements.txt
       ```
+   4. Rename `.env.example` to `.env` and update with appropriate values.
+      - For **GROQ_API_KEY** follow this -> https://console.groq.com/keys
+      - For **OPENAI_API_KEY** follow this -> https://platform.openai.com/api-keys
+      - For **GOOGLE_API_KEY** follow this -> https://ai.google.dev/gemini-api/docs/api-key
+      - For **ANTHROPIC_API_KEY** follow this -> https://console.anthropic.com/settings/keys
+<
+hr>
 
 ### 💻 Running the Application
 To start the application, run:
 ```bash
 streamlit run app.py
 ```
-
-<div align="left">
-   <img src="images/app.png" alt="App"/>
-</div>

@@ -5,11 +5,60 @@ directing cases to appropriate specialized medical teams based on case analysis.
 """
 from typing import Dict, Tuple
 import streamlit as st
-from src.utils.llm import llm_call, extract_xml
-from src.workflow.utils.constants import MEDICAL_ROUTES, SAMPLE_MEDICAL_QUERIES
+from utils.llm import llm_call, extract_xml
 
 from PIL import Image
 from pathlib import Path
+
+SAMPLE_MEDICAL_QUERIES = [
+    """Patient Case:
+    58-year-old male experiencing severe chest pain radiating to left arm for past hour.
+    History of hypertension. No prior cardiac events.
+    Sweating and nauseous. BP 160/95.
+    Requesting guidance on immediate steps.""",
+
+    """Patient Case:
+    42-year-old female with type 2 diabetes for 5 years.
+    Recent A1C 8.2%, up from 7.1% three months ago.
+    Reports difficulty following diet plan and checking glucose regularly.
+    Seeking management strategy adjustment.""",
+
+    """Patient Case:
+    35-year-old female, no significant medical history.
+    Due for annual check-up. Last mammogram 2 years ago.
+    Family history of breast cancer (mother, age 45).
+    Requesting preventive care planning."""
+]
+
+MEDICAL_ROUTES = {
+    "urgent_care": """You are an urgent care triage specialist. Follow these guidelines:
+    1. Start with "Urgent Care Assessment:"
+    2. Evaluate symptoms for severity
+    3. Determine appropriate level of care
+    4. Provide immediate action steps
+    5. Include red flag warnings if applicable""",
+
+    "chronic_care": """You are a chronic care coordinator. Follow these guidelines:
+    1. Start with "Chronic Care Management:"
+    2. Review ongoing conditions
+    3. Assess medication compliance
+    4. Evaluate lifestyle factors
+    5. Provide long-term management strategies""",
+
+    "preventive_care": """You are a preventive care specialist. Follow these guidelines:
+    1. Start with "Preventive Care Recommendations:"
+    2. Review risk factors
+    3. Suggest screening tests
+    4. Provide lifestyle recommendations
+    5. Set prevention goals""",
+
+    "specialist_referral": """You are a medical referral coordinator. Follow these guidelines:
+    1. Start with "Specialist Referral Assessment:"
+    2. Identify specialty need
+    3. Review case complexity
+    4. Determine urgency
+    5. Provide referral process steps"""
+}
 
 # Core Routing Functions
 def analyze_and_route(input: str, routes: Dict[str, str], temperature: float, provider: str, model: str) -> Tuple[str, str, str]:

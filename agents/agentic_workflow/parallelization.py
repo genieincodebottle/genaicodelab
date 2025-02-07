@@ -9,12 +9,37 @@ from enum import Enum
 import json
 import streamlit as st
 
-from src.utils.llm import llm_call
-from src.workflow.utils.constants import HEALTHCARE_STAKEHOLDERS
-from src.workflow.utils.prompts import MEDICAL_REVIEW_PROMPTS
+from utils.llm import llm_call
+from utils.prompts import MEDICAL_REVIEW_PROMPTS
 
 from PIL import Image
 from pathlib import Path
+
+HEALTHCARE_STAKEHOLDERS = [
+    """Patient Care Team:
+    - Primary care physician
+    - Specialist consultants
+    - Nursing staff
+    - Allied health professionals""",
+
+    """Patient and Family:
+    - Patient's immediate needs
+    - Family caregiver requirements
+    - Home care considerations
+    - Financial implications""",
+
+    """Healthcare Facility:
+    - Resource allocation
+    - Staff scheduling
+    - Equipment needs
+    - Regulatory compliance""",
+
+    """Support Services:
+    - Laboratory
+    - Radiology
+    - Pharmacy
+    - Physical therapy"""
+]
 
 class ParallelizationType(Enum):
     """Enum for different parallelization types."""

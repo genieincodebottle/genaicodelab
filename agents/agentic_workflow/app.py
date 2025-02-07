@@ -1,15 +1,13 @@
 import streamlit as st
-from src.utils.llm import LLM_CONFIGS
+from utils.llm import LLM_CONFIGS
 
 # Importing all level of Agentic Flow
-from src.workflow.prompt_chaining import render_prompt_chain_medical_analysis
-from src.workflow.parallelization import render_parallelization_medical_analysis
-from src.workflow.query_routing import render_query_routing_medical_analysis
-from src.workflow.evaluator_and_optimizer import render_eval_and_optimize_medical_analysis
-from src.workflow.orchestrator import render_orchestrator_medical_analysis
-from src.workflow.tool_calling import render_tool_calling_medical_analysis
-from src.multi_step_agent.multi_step_agent_ui import render_multi_step_agent_medical_analysis
-from src.autonomous_agent.autonomous_agent_ui import render_autonomous_multi_agent_medical_analysis
+from agentic_workflow.prompt_chaining import render_prompt_chain_medical_analysis
+from agentic_workflow.parallelization import render_parallelization_medical_analysis
+from agentic_workflow.query_routing import render_query_routing_medical_analysis
+from agentic_workflow.evaluator_and_optimizer import render_eval_and_optimize_medical_analysis
+from agentic_workflow.orchestrator import render_orchestrator_medical_analysis
+from agentic_workflow.tool_calling import render_tool_calling_medical_analysis
 
 # Set page config as the first command
 st.set_page_config(
@@ -117,10 +115,7 @@ def main():
              "Routing",
              "Evaluator and Optimizers",
              "Orchestrator",
-             "Tool Calling",
-             "Multi-Step Agent",
-             "Autonomous Multi Agent",
-             "CrewAI Multi Agent"],
+             "Tool Calling"],
             key='workflow_selector'
         )
         
@@ -139,8 +134,6 @@ def main():
         4. **Evaluator/Optimizer**: Quality control and improvement
         5. **Orchestrator**: Complex workflow management
         6. **Tool Calling**: External tool integration
-        7. **Multi-Step Agent**: Advanced decision making
-        8. **Autonomous Agent**: Full automation with multiple agents
         
         **Best Practices**:
         - Start with simpler workflows
@@ -163,11 +156,7 @@ def main():
             render_orchestrator_medical_analysis()
         elif selected_workflow == "Tool Calling":
             render_tool_calling_medical_analysis()
-        elif selected_workflow == "Multi-Step Agent":
-            render_multi_step_agent_medical_analysis()
-        elif selected_workflow == "Autonomous Multi Agent":
-            render_autonomous_multi_agent_medical_analysis()
-
+     
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
         if st.session_state.processing:

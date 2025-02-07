@@ -240,7 +240,7 @@ def render_workflow_diagram() -> None:
     with st.expander("📖 System Workflow", expanded=False):
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script
-        image_path = current_dir.parent.parent / 'images'
+        image_path = current_dir / 'images'
         
         prompt_chain_diagram = Image.open(image_path/ 'prompt_chaining.png')
         st.image(prompt_chain_diagram, caption='High Level Architecture')

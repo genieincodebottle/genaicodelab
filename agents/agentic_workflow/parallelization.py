@@ -238,7 +238,7 @@ def render_workflow_diagram():
     with st.expander("📖 System Workflow", expanded=False):
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script
-        image_path = current_dir.parent.parent / 'images'
+        image_path = current_dir / 'images'
                 
         parallel_diagram = Image.open(image_path/ 'parallelization.png')
         st.image(parallel_diagram, caption='High Level Architecture')

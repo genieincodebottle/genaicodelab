@@ -2,16 +2,16 @@ import streamlit as st
 from utils.llm import LLM_CONFIGS
 
 # Importing all level of Agentic Flow
-from agentic_workflow.prompt_chaining import render_prompt_chain_medical_analysis
-from agentic_workflow.parallelization import render_parallelization_medical_analysis
-from agentic_workflow.query_routing import render_query_routing_medical_analysis
-from agentic_workflow.evaluator_and_optimizer import render_eval_and_optimize_medical_analysis
-from agentic_workflow.orchestrator import render_orchestrator_medical_analysis
-from agentic_workflow.tool_calling import render_tool_calling_medical_analysis
+from prompt_chaining import render_prompt_chain_medical_analysis
+from parallelization import render_parallelization_medical_analysis
+from query_routing import render_query_routing_medical_analysis
+from evaluator_and_optimizer import render_eval_and_optimize_medical_analysis
+from orchestrator import render_orchestrator_medical_analysis
+from tool_calling import render_tool_calling_medical_analysis
 
 # Set page config as the first command
 st.set_page_config(
-    page_title="Sample Agentic Helthcare App",
+    page_title="Agentic-Workflow based Helthcare system",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -79,7 +79,7 @@ def main():
     # Initialize session state
     reset_session_state()
 
-    st.title("🏥 Sample Healthcare App")
+    st.header("🏥 Healthcare System")
     
     # Custom CSS
     st.markdown("""
@@ -105,11 +105,11 @@ def main():
     
     # Sidebar configuration
     with st.sidebar:
-        st.header("Noob Workflow to Autonomous Agentic Patterns")
+        st.header("Agentic Workflow Patterns")
         
         # Workflow Selection
         selected_workflow = st.selectbox(
-            "Select Workflow/Agent for Medical Analysis",
+            "Select Workflow for Medical Analysis",
             ["Prompt Chaining", 
              "Parallelization",
              "Routing",

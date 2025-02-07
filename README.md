@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="static/images/logo.png" alt="Agents" width="500" height="300"/>
+   <img src="images/logo.png" alt="GenAI Code Lab"/>
 </div>
 
 <div align="center">

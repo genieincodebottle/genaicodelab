@@ -1,7 +1,7 @@
 import streamlit as st
 from utils.llm import LLM_CONFIGS
 
-# Importing all level of Agentic Flow
+# Importing all level of AI Workflow
 from prompt_chaining import render_prompt_chain_medical_analysis
 from parallelization import render_parallelization_medical_analysis
 from query_routing import render_query_routing_medical_analysis

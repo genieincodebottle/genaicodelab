@@ -12,7 +12,7 @@
    1. Clone the repository:
       ```bash
       git clone https://github.com/genieincodebottle/genaicodelab.git
-      cd genaicodelab/agents/agentic_workflow
+      cd genaicodelab/agentic_ai/ai_workflow
       ```
    2. Create a virtual environment:
       ```bash

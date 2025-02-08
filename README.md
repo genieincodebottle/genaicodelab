@@ -13,12 +13,14 @@ Repository for all advanced concepts of GenAI with code.
 
 ### 🌟 Overview
 
-Each link includes its own README file with installation and setup instructions, allowing you to run it independently on your system.
+Each link has a README with setup steps, so you can run it independently.
 
-- #### [Agents](./agents/)
-   - ##### [Agentic Workflow](./agents/agentic_workflow/)
-   - ##### [CrewAI Usecase](./agents/crewai_usecases/)
-   - ##### [LangGraph Usecase](./agents/langraph_usecases/)
+- #### [Agentic AI](./agentic_ai/)
+   - ##### [AI Workflow](./agentic_ai/ai_workflow/)
+   - ##### [Agents](./agentic_ai/agents/)
+      - ##### [CrewAI Usecases](./agentic_ai/agents/crewai_usecases/)
+      - ##### [LangGraph Usecases](./agentic_ai/agents/langraph_usecases/)
+      - ##### [Phidata Usecases](./agentic_ai/agents/phidata_usecases/)
 - #### [Cache Augumented Generation](./cache_augumeted_generation/)
 - #### [Your AI Chat Analytics](./your_ai_chat_analytics/)  
 - #### Advanced Agentic-RAG

@@ -1,25 +1,32 @@
 <div align="center">
-   <img src="../images/header.png" alt="Agents" />
+   <img src="../images/agentic_ai_header.png" alt="Agents" />
 </div>
+<br>
 
-- [🤖 What are AI Agents?](#-what-are-ai-agents)
-- [📊 Understanding Agency Levels](#-understanding-agency-levels)
-- [⚙️ How Do AI Agents Work?](#%EF%B8%8F-how-do-ai-agents-work)
-- [🎯 When to Use Each Agency Level? ](#-when-to-use-each-agency-level)
-- [🌐 Types of AI Agents](#-types-of-ai-agents)
-- [💡 Best Practices for Development](#-best-practices-for-development)
-- [📚 Learn More](#-learn-more)
+[🤖 What is Agentic AI or AI Agents?](#-what-are-ai-agents)
 
-### 🤖 What are AI Agents? 
+[📊 Understanding Agency Levels](#-understanding-agency-levels)
 
-AI Agents are the next evolution of Large Language Models (LLMs). Instead of just processing text, they can:
+[⚙️ How Do AI Agents Work?](#%EF%B8%8F-how-do-ai-agents-work)
+
+[🎯 When to Use Each Agency Level? ](#-when-to-use-each-agency-level)
+
+[🌐 Types of AI Agents](#-types-of-ai-agents)
+
+[💡 Best Practices for Development](#-best-practices-for-development)
+
+[📚 Learn More](#-learn-more)
+
+### 🤖 What is Agentic AI or AI Agents? 
+
+Agentic AI/AI Agents are the next evolution of Large Language Models (LLMs). Instead of just processing text, they can:
 - Actively solve complex problems
 - Make strategic decisions
 - Use tools and APIs
 - Learn and adapt from interactions
 - Work autonomously
 
-Think of an AI Agent as an LLM with hands and a brain, it can understand, plan and interact with the real world through tools and APIs.
+Think of an AI Agent as an LLM with hands and a brain, it can understand, plan and interact with the real world through tools and APIs autonomously.
 
 <img src="../images/agents.png" alt="Agents" width="500" height="300"/>
 

@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="images/agentic_workflow.png" alt="Agents" />
+   <img src="images/ai_workflow.png" alt="Agents" />
 </div>
 
 ### ⚙️ Setup Instructions

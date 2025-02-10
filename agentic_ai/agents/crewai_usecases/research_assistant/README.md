@@ -6,9 +6,9 @@
 
 ### 📄 [CrewAI Documentation](https://docs.crewai.com/introduction)
 
-### 🛠️ CrewAI Architecture
+### 🛠️ Research Assistant Architecture
 
-   <img src="images/crewai_architecture.png" alt="CrewAI Architecture"/>
+   <img src="images/architecture.png" alt="Architecture"/>
 
 ### ⚙️ Setup Instructions
 

@@ -1,10 +1,14 @@
 
 
 <div align="center">
-   <img src="images/ai_workflow.png" alt="Agents" />
+   <img src="images/crewai_header.png" alt="Agents" />
 </div>
 
 ### 📄 [CrewAI Documentation](https://docs.crewai.com/introduction)
+
+### 🛠️ CrewAI Architecture
+
+   <img src="images/crewai_architecture.png" alt="CrewAI Architecture"/>
 
 ### ⚙️ Setup Instructions
 

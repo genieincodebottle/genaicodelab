@@ -8,7 +8,7 @@
 
 ### 🛠️ CrewAI Architecture
 
-   <img src="images/crewai_architecture.png" alt="CrewAI Architecture"/>
+   <img src="images/crewai-architecture.png" alt="CrewAI Architecture"/>
 
 ### ⚙️ Setup Instructions
 

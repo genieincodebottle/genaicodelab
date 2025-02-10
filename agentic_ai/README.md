@@ -3,6 +3,8 @@
 </div>
 <br>
 
+[📝 Agentic AI Interview Q & A](../docs/agentic-ai-interview-questions.pdf)
+
 [🤖 What is Agentic AI or AI Agents?](#-what-are-ai-agents)
 
 [📊 Understanding Agency Levels](#-understanding-agency-levels)

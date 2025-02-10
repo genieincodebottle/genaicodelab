@@ -1,4 +1,5 @@
 .env
+.history
 .DS_Store
 .huskyrc.json
 out

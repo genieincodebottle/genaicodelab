@@ -36,3 +36,44 @@ To start the application, run:
 ```bash
 streamlit run app.py
 ```
+### AI Workflows
+
+##### **Prompt Chaining**: Sequential prompts for basic analysis
+
+<br>
+
+<img src="images/prompt_chaining.png" alt="Prompt Chaining" />
+<br>
+
+##### **Parallelization**: Concurrent analysis tasks
+
+<br>
+
+<img src="images/parallelization.png" alt="Parallelization" />
+
+##### **Query Routing**: Dynamic task distribution
+
+<br>
+
+<img src="images/routing.png" alt="Query Routing" />
+<br>
+
+##### **Evaluator/Optimizer**: Quality control and improvement
+
+<br>
+
+<img src="images/eval.png" alt="Evaluator and Optimizer" />
+<br>
+
+##### **Orchestrator**: Complex workflow management
+
+<br>
+
+<img src="images/orchestrator.png" alt="Orchestartor" />
+<br>
+
+##### **Tool Calling**: External tool integration
+
+<br>
+
+<img src="images/tool_calling.png" alt="Tool Calling" />

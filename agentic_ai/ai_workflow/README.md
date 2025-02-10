@@ -38,42 +38,26 @@ streamlit run app.py
 ```
 ### AI Workflows
 
-##### **Prompt Chaining**: Sequential prompts for basic analysis
-
+#### **Prompt Chaining**: Sequential prompts for basic analysis
 <br>
-
 <img src="images/prompt_chaining.png" alt="Prompt Chaining" />
+
+#### **Parallelization**: Concurrent analysis tasks
 <br>
-
-##### **Parallelization**: Concurrent analysis tasks
-
-<br>
-
 <img src="images/parallelization.png" alt="Parallelization" />
 
-##### **Query Routing**: Dynamic task distribution
-
+#### **Query Routing**: Dynamic task distribution
 <br>
-
 <img src="images/routing.png" alt="Query Routing" />
+
+#### **Evaluator/Optimizer**: Quality control and improvement
 <br>
-
-##### **Evaluator/Optimizer**: Quality control and improvement
-
-<br>
-
 <img src="images/eval.png" alt="Evaluator and Optimizer" />
+
+#### **Orchestrator**: Complex workflow management
 <br>
-
-##### **Orchestrator**: Complex workflow management
-
-<br>
-
 <img src="images/orchestrator.png" alt="Orchestartor" />
+
+#### **Tool Calling**: External tool integration
 <br>
-
-##### **Tool Calling**: External tool integration
-
-<br>
-
 <img src="images/tool_calling.png" alt="Tool Calling" />

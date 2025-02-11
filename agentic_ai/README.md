@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="../images/agentic_ai_header.png" alt="Agents" />
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/agentic_ai_header.png" alt="Agents" />
 </div>
 <br>
 <hr>
@@ -46,7 +46,7 @@ Agentic AI/AI Agents are the next evolution of Large Language Models (LLMs). Ins
 
 Think of an AI Agent as an LLM with hands and a brain, it can understand, plan and interact with the real world through tools and APIs autonomously.
 
-<img src="images/agentic_ai.png" alt="Agents"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/agentic_ai.png" alt="Agents"/>
 
 <hr>
 
@@ -62,7 +62,7 @@ Agency refers to how independently an AI system can operate. Here's what each le
 
 Adapted from above references.
 
-<img src="../images/agency-spectrum.png" alt="Agency Spectrum"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/agency-spectrum.png" alt="Agency Spectrum"/>
 
 #### Level 0: No Agency
 - Basic text processing
@@ -106,7 +106,7 @@ Adapted from above references.
 
 #### The Operation Cycle
 
-<img src="../images/operational-cycle.png" alt="Operation Cycle"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/operational-cycle.png" alt="Operation Cycle"/>
 
 1. **Perceive** 👀
    - Understands context
@@ -132,7 +132,7 @@ Adapted from above references.
 
 AI Agents use different types of memory to function effectively:
 
-<img src="../images/memory-mgmt.png" alt="Memory Management" width="350" height="300"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/memory-mgmt.png" alt="Memory Management" width="350" height="300"/>
 
 ##### Short-Term Memory
 - **Conversation Memory**: Keeps track of current dialogue
@@ -147,7 +147,7 @@ AI Agents use different types of memory to function effectively:
 
 AI Agents can interact with various external tools and resources:
 
-<img src="../images/tool-integration.png" alt="Available Resources" width="300" height="300"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/tool-integration.png" alt="Available Resources" width="300" height="300"/>
 
 - **APIs**: Connect to external services
 - **Databases**: Store and retrieve data
@@ -158,7 +158,7 @@ AI Agents can interact with various external tools and resources:
 
 ### 🌐 Types of AI Agents 
 
-<img src="../images/type-of-agents.png" alt="Types of Agents" width="400" height="450"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/type-of-agents.png" alt="Types of Agents" width="400" height="450"/>
 
 #### Development Agents
 - Write and review code
@@ -184,7 +184,7 @@ AI Agents can interact with various external tools and resources:
 
 ### 💡 Best Practices for Development 
 
-<img src="../images/design-principles.png" alt="Design Principles" width="200" height="200"/>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/design-principles.png" alt="Design Principles" width="200" height="200"/>
 
 #### 1. Start Small, Scale Smart
 - Begin with minimal features

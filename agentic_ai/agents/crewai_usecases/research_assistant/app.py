@@ -158,7 +158,7 @@ def render_workflow_diagram():
     with st.expander("📖 System Workflow", expanded=False):
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script
-        image_path = current_dir / 'images'
+        image_path = current_dir.parent.parent.parent.parent / 'images'
                 
         routing_diagram = Image.open(image_path/ 'architecture.png')
         st.image(routing_diagram, caption='High Level Architecture')
@@ -173,12 +173,6 @@ def main():
         page_icon="🔍",
         layout="wide"
     )
-
-    # Initialize session state for form values if they don't exist
-    if 'research_topic' not in st.session_state:
-        st.session_state.research_topic = DEFAULT_RESEARCH_TOPIC
-    if 'specific_requirements' not in st.session_state:
-        st.session_state.specific_requirements = DEFAULT_REQUIREMENTS
 
     # Sidebar configuration
     with st.sidebar:
@@ -206,7 +200,7 @@ def main():
     # Research form with session state
     research_topic = st.text_area(
         "Research Topic",
-        value=st.session_state.research_topic,
+        value=DEFAULT_RESEARCH_TOPIC,
         height=70,
         key='research_topic'
     )
@@ -227,7 +221,7 @@ def main():
 
     specific_requirements = st.text_area(
         "Specific Requirements",
-        value=st.session_state.specific_requirements,
+        value=DEFAULT_REQUIREMENTS,
         height=140,
         key='specific_requirements'
     )

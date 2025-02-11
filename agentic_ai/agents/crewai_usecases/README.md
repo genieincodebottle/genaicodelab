@@ -1,14 +1,14 @@
 
 
 <div align="center">
-   <img src="images/crewai_header.png" alt="Agents" />
+   <img src=".https://github.com/genieincodebottle/genaicodelab/blob/main/images/crewai_header.png" alt="CrewAI Header" />
 </div>
 
 ### 📄 [CrewAI Documentation](https://docs.crewai.com/introduction)
 
 ### 🧩 CrewAI Architecture
 
-   <img src="images/crewai-architecture.png" alt="CrewAI Architecture"/>
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/crewai-architecture.png" alt="CrewAI Architecture"/>
 
 ### 🔍 CrewAI Overview
 

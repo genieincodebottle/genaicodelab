@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="images/ai_workflow.png" alt="Agents" />
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/ai_workflow.png" alt="Agents" />
 </div>
 
 ### ⚙️ Setup Instructions
@@ -52,7 +52,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
    -  Generate code → Review for errors → Optimize for performance.
 <br>
 
-<img src="images/prompt_chaining.png" alt="Prompt Chaining" />
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/prompt_chaining.png" alt="Prompt Chaining" />
 
 ### 🔀 Parallelization 
 - Concurrent analysis tasks
@@ -65,7 +65,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
    -  **Voting**: Multiple LLM calls review code for vulnerabilities or assess content moderation thresholds.
 <br>
 
-<img src="images/parallelization.png" alt="Parallelization" />
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/parallelization.png" alt="Parallelization" />
 
 ### 📡 Query Routing
 - Dynamic task distribution
@@ -75,7 +75,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
    - Send simple queries to smaller models and complex ones to larger models for cost and speed optimization.
 <br>
 
-<img src="images/routing.png" alt="Query Routing" />
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/routing.png" alt="Query Routing" />
 
 ### 📈 Evaluator/Optimizer
 - Quality control and improvement
@@ -85,7 +85,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
    - Enhancing complex searches by assessing results and determining if further searches are needed.
 <br>
 
-<img src="images/eval.png" alt="Evaluator and Optimizer" />
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/eval.png" alt="Evaluator and Optimizer" />
 
 ### 🎼 Orchestrator 
 - Complex workflow management
@@ -95,7 +95,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
    -  Conduct searches across various sources, analyzing and synthesizing relevant information.
 <br>
 
-<img src="images/orchestrator.png" alt="Orchestartor" />
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/orchestrator.png" alt="Orchestartor" />
 
 ### 📞 Tool Calling 
 - External tool integration
@@ -105,4 +105,4 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
    - Fetching real-time data (weather, stock prices, database queries) via APIs to enhance responses.
 <br>
 
-<img src="images/tool_calling.png" alt="Tool Calling" />
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/tool_calling.png" alt="Tool Calling" />

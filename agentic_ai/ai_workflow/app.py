@@ -11,26 +11,30 @@ from tool_calling import render_tool_calling_medical_analysis
 
 # Set page config as the first command
 st.set_page_config(
-    page_title="Agentic-Workflow based Helthcare system",
-    page_icon="🤖",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+        page_title="Agentic-Workflow based Healthcare system",
+        page_icon="🤖",
+        layout="wide"
+    )
 
 def reset_session_state():
     """
     Ensure all required session state variables exist and 
     initialize them with default values if not present
     """
-    if 'temperature' not in st.session_state:
-        st.session_state.temperature = 0.3
+    defaults = {
+        'temperature': 0.3,
+        'processing': False,
+        'selected_llm_provider': list(LLM_CONFIGS.keys())[0],
+        'selected_llm_model': LLM_CONFIGS[list(LLM_CONFIGS.keys())[0]]["models"][0]
+    }
     
-    if 'processing' not in st.session_state:
-        st.session_state.processing = False
-    
+    for key, value in defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = value
+
 def render_llm_configuration():
     """Render LLM configuration section in sidebar"""
-    st.header("LLM Configuration")
+    st.markdown("## LLM Configuration")
     
     # LLM Provider Selection
     provider = st.selectbox(
@@ -42,18 +46,15 @@ def render_llm_configuration():
     
     # Model Selection based on provider
     available_models = LLM_CONFIGS[provider]["models"]
-    selected_model = st.selectbox(
+    st.selectbox(
         "Select Model",
         options=available_models,
         key='selected_llm_model',
         help=f"Choose the specific {provider} model"
     )
     
-    if "temperature" not in st.session_state:
-        st.session_state.temperature = 0.3
-
-    # Temperature configuration
-    temperature = st.slider(
+    # Temperature configuration with proper spacing
+    st.slider(
         "Temperature",
         min_value=0.0,
         max_value=1.0,
@@ -61,15 +62,25 @@ def render_llm_configuration():
         key='temperature',
         help="Lower values for more focused responses, higher for more creative ones"
     )
-       
-    # Model information display
-    st.markdown(f"""
-    **Current Configuration**:
-    - Provider: {provider}
-    - Model: {selected_model}
-    - Temperature: {temperature}
     
-    **Capabilities**:
+    # Model information display with improved formatting
+    st.markdown("""
+    ### Current Configuration
+    """)
+    
+    info_col1, info_col2 = st.columns(2)
+    with info_col1:
+        st.markdown(f"""
+        - Provider: {provider}
+        - Model: {st.session_state.selected_llm_model}
+        """)
+    with info_col2:
+        st.markdown(f"""
+        - Temperature: {st.session_state.temperature}
+        """)
+    
+    st.markdown("""
+    ### Capabilities
     - Medical terminology processing
     - Clinical reasoning
     - Evidence-based analysis
@@ -78,36 +89,12 @@ def render_llm_configuration():
 def main():
     # Initialize session state
     reset_session_state()
-
-    st.header("🏥 Healthcare System")
     
-    # Custom CSS
-    st.markdown("""
-        <style>
-            body {
-                zoom: 0.8;
-                -moz-transform: scale(0.8);
-                -moz-transform-origin: 0 0;
-            }
-            [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-                width: 500px;
-            }
-            [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-                width: 500px;
-                margin-left: -500px;
-            }
-            .main .block-container {
-                padding-top: 1rem !important;
-                padding-bottom: 1rem !important;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-    
-    # Sidebar configuration
+    # Sidebar layout
     with st.sidebar:
-        st.header("Agentic Workflow Patterns")
+        st.markdown("# Agentic Workflow Patterns")
         
-        # Workflow Selection
+        # Workflow Selection with improved spacing
         selected_workflow = st.selectbox(
             "Select Workflow for Medical Analysis",
             ["Prompt Chaining", 
@@ -119,15 +106,14 @@ def main():
             key='workflow_selector'
         )
         
-        # Render LLM Configuration
         st.markdown("---")
         render_llm_configuration()
         
-        # Documentation Section
         st.markdown("---")
-        st.header("Documentation")
         st.markdown("""
-        **Workflow Levels**:
+        ## Documentation
+        
+        ### Workflow Levels
         1. **Prompt Chaining**: Sequential prompts for basic analysis
         2. **Parallelization**: Concurrent analysis tasks
         3. **Query Routing**: Dynamic task distribution
@@ -135,27 +121,29 @@ def main():
         5. **Orchestrator**: Complex workflow management
         6. **Tool Calling**: External tool integration
         
-        **Best Practices**:
+        ### Best Practices
         - Start with simpler workflows
         - Monitor performance metrics
         - Review agent decisions
         - Adjust temperature as needed
         """)
     
+    # Main content area
+    st.header("🏥 Healthcare System")
+    
     try:
         # Route to appropriate Agentic Level Workflow
-        if selected_workflow == "Prompt Chaining":
-            render_prompt_chain_medical_analysis()
-        elif selected_workflow == "Parallelization":
-            render_parallelization_medical_analysis()
-        elif selected_workflow == "Routing":
-            render_query_routing_medical_analysis()
-        elif selected_workflow == "Evaluator and Optimizers":
-            render_eval_and_optimize_medical_analysis()
-        elif selected_workflow == "Orchestrator":
-            render_orchestrator_medical_analysis()
-        elif selected_workflow == "Tool Calling":
-            render_tool_calling_medical_analysis()
+        workflow_mapping = {
+            "Prompt Chaining": render_prompt_chain_medical_analysis,
+            "Parallelization": render_parallelization_medical_analysis,
+            "Routing": render_query_routing_medical_analysis,
+            "Evaluator and Optimizers": render_eval_and_optimize_medical_analysis,
+            "Orchestrator": render_orchestrator_medical_analysis,
+            "Tool Calling": render_tool_calling_medical_analysis
+        }
+        
+        if selected_workflow in workflow_mapping:
+            workflow_mapping[selected_workflow]()
      
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")

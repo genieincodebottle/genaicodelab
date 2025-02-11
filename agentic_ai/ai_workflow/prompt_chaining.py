@@ -232,7 +232,7 @@ def display_analysis_results(result: str) -> None:
     with tab2:
         st.markdown("### Analysis Pipeline")
         for i, step in enumerate(MEDICAL_REPORT_STEPS, 1):
-            with st.expander(f"Step {i}: {step.split('\n')[0]}", expanded=False):
+            with st.expander(f"Step {i}: {step.split('/n')[0]}", expanded=False):
                 st.markdown(step)
 
 def render_workflow_diagram() -> None:
@@ -240,7 +240,7 @@ def render_workflow_diagram() -> None:
     with st.expander("📖 System Workflow", expanded=False):
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script
-        image_path = current_dir / 'images'
+        image_path = current_dir.parent.parent / 'images'
         
         prompt_chain_diagram = Image.open(image_path/ 'prompt_chaining.png')
         st.image(prompt_chain_diagram, caption='High Level Architecture')

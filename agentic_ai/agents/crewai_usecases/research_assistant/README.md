@@ -8,7 +8,7 @@
 
 ### 🧩 Research Assistant Architecture
 
-   <img src="images/architecture.png" alt="Architecture"/>
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/architecture.png" alt="Architecture"/>
 
 ### ⚙️ Setup Instructions
 

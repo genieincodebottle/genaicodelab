@@ -4,9 +4,9 @@
    <h1>Research Assistant</h1>
 </div>
 
-### 🧩 Research Assistant Architecture
+### 🧩 Flow Diagram
 
-   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/architecture.png" alt="Architecture"/>
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/sequence_diagram.png" alt="Flow Diagram"/>
 
 ### 🌟 Overview
 

@@ -4,13 +4,13 @@
    <h1>Data Analysis Assistant</h1>
 </div>
 
-### 🧩 Architecture
+### 🧩 Flow Diagram
 
-   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/data_analysis_architecture.png" alt="Architecture"/>
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/data_analysis_sequence_diagram.png" alt="Sequence Diagram"/>
 
 ### 🌟 Overview
 
-An intelligent data analysis assistant that combines AI-powered analysis with interactive visualizations and analysis generation using CrewAI agentic framework.
+A data analysis assistant that combines AI powered analysis with interactive visualizations and analysis generation using CrewAI agentic framework.
 
 <hr>
 

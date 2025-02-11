@@ -6,7 +6,7 @@
 
 ### 📄 [CrewAI Documentation](https://docs.crewai.com/introduction)
 
-### 🛠️ Research Assistant Architecture
+### 🧩 Research Assistant Architecture
 
    <img src="images/architecture.png" alt="Architecture"/>
 

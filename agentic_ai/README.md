@@ -11,6 +11,9 @@
 
 - [AI Workflow](./ai_workflow/)
 - [AI Agents](./agents/)
+   - [CrewAI Usecases](./agents/crewai_usecases/)
+   - [Langgraph Usecases](./agents/langgraph_usecases/)
+   - [Phidata Usecases](./agents/phidata_usecases/)
 
 [📝 Agentic AI Interview Q & A](../docs/agentic-ai-interview-questions.pdf)
 

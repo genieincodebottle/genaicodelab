@@ -67,7 +67,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
 
 <img src="images/parallelization.png" alt="Parallelization" />
 
-#### 📡 Query Routing
+### 📡 Query Routing
 - Dynamic task distribution
 - Use when tasks fall into distinct categories best handled separately, improving specialization and efficiency.
 - Examples:
@@ -77,7 +77,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
 
 <img src="images/routing.png" alt="Query Routing" />
 
-#### 📈 Evaluator/Optimizer
+### 📈 Evaluator/Optimizer
 - Quality control and improvement
 - Use when responses can be iteratively improved based on clear evaluation criteria and feedback loops.
 - Examples:
@@ -87,7 +87,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
 
 <img src="images/eval.png" alt="Evaluator and Optimizer" />
 
-#### 🎼 Orchestrator 
+### 🎼 Orchestrator 
 - Complex workflow management
 - Use when tasks require dynamic decomposition, with an orchestrator LLM assigning subtasks to worker LLMs based on input.
 - Examples:
@@ -97,7 +97,7 @@ Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropi
 
 <img src="images/orchestrator.png" alt="Orchestartor" />
 
-#### 📞 Tool Calling 
+### 📞 Tool Calling 
 - External tool integration
 - Use when LLMs need to interact with external tools for accurate, real-time, or computationally heavy tasks.
 - Examples:

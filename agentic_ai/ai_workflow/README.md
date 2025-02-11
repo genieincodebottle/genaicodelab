@@ -35,6 +35,8 @@ To start the application, run:
 ```bash
 streamlit run app.py
 ```
+<hr>
+
 ### AI Workflows 
 
 Reference: [Anthropic's Guide to Building Effective Agents](https://www.anthropic.com/research/building-effective-agents)

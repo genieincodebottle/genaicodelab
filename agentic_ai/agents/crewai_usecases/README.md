@@ -1,7 +1,7 @@
 
 
 <div align="center">
-   <img src=".https://github.com/genieincodebottle/genaicodelab/blob/main/images/crewai_header.png" alt="CrewAI Header" />
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/crewai_header.png" alt="CrewAI Header" />
 </div>
 
 ### 📄 [CrewAI Documentation](https://docs.crewai.com/introduction)

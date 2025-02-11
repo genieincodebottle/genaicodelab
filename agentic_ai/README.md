@@ -2,8 +2,19 @@
    <img src="../images/agentic_ai_header.png" alt="Agents" />
 </div>
 <br>
+<hr>
+📚 Courses
+
+- [Huggingface AI Agents Course 🆕](https://huggingface.co/learn/agents-course/en/unit0/introduction)
+
+🔣 Codes
+
+- [AI Workflow](./ai_workflow/)
+- [AI Agents](./agents/)
 
 [📝 Agentic AI Interview Q & A](../docs/agentic-ai-interview-questions.pdf)
+
+<hr>
 
 [🤖 What is Agentic AI or AI Agents?](#-what-are-ai-agents)
 
@@ -19,6 +30,8 @@
 
 [📚 Learn More](#-learn-more)
 
+<hr>
+
 ### 🤖 What is Agentic AI or AI Agents? 
 
 Agentic AI/AI Agents are the next evolution of Large Language Models (LLMs). Instead of just processing text, they can:
@@ -30,7 +43,7 @@ Agentic AI/AI Agents are the next evolution of Large Language Models (LLMs). Ins
 
 Think of an AI Agent as an LLM with hands and a brain, it can understand, plan and interact with the real world through tools and APIs autonomously.
 
-<img src="../images/agents.png" alt="Agents" width="500" height="300"/>
+<img src="images/agentic_ai.png" alt="Agents"/>
 
 <hr>
 
@@ -46,7 +59,7 @@ Agency refers to how independently an AI system can operate. Here's what each le
 
 Adapted from above references.
 
-<img src="../images/agency-spectrum.png" alt="Agency Spectrum" width="650" height="400"/>
+<img src="../images/agency-spectrum.png" alt="Agency Spectrum"/>
 
 #### Level 0: No Agency
 - Basic text processing
@@ -90,7 +103,7 @@ Adapted from above references.
 
 #### The Operation Cycle
 
-<img src="../images/operational-cycle.png" alt="Operation Cycle" width="700" height="400"/>
+<img src="../images/operational-cycle.png" alt="Operation Cycle"/>
 
 1. **Perceive** 👀
    - Understands context

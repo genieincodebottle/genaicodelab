@@ -19,7 +19,7 @@ Each link has a README with setup steps, so you can run it independently.
    - ##### [AI Workflow](./agentic_ai/ai_workflow/)
    - ##### [Agents](./agentic_ai/agents/)
       - ##### [CrewAI Usecases](./agentic_ai/agents/crewai_usecases/)
-      - ##### [LangGraph Usecases](./agentic_ai/agents/langraph_usecases/)
+      - ##### [LangGraph Usecases](./agentic_ai/agents/langgraph_usecases/)
       - ##### [Phidata Usecases](./agentic_ai/agents/phidata_usecases/)
 - #### [Cache Augumented Generation](./cache_augumeted_generation/)
 - #### [Your AI Chat Analytics](./your_ai_chat_analytics/)  

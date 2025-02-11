@@ -154,7 +154,7 @@ def create_tasks(researcher, analyst, writer, research_topic, research_type,
     return tasks
 
 def render_workflow_diagram():
-    """Render the evaluator and optimizer workflow diagram with mermaid."""
+    """Render the Research Assistant workflow diagram."""
     with st.expander("📖 System Workflow", expanded=False):
         # Get the relative path to the image
         current_dir = Path(__file__).parent  # Directory of current script

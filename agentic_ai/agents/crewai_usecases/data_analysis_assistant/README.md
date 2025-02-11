@@ -1,21 +1,27 @@
 
 
 <div align="center">
-   <h1>Research Assistant</h1>
+   <h1>Data Analysis Assistant</h1>
 </div>
 
-### 🧩 Research Assistant Architecture
+### 🧩 Architecture
 
-   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/architecture.png" alt="Architecture"/>
+   <img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/data_analysis_architecture.png" alt="Architecture"/>
 
 ### 🌟 Overview
 
-An AI-powered agentic research assistant that automates topic research, data analysis, and report generation using CrewAI's agentic framework.
+An intelligent data analysis assistant that combines AI-powered analysis with interactive visualizations and analysis generation using CrewAI agentic framework.
+
+<hr>
 
 ### ✨ Features
 
-- AI-driven topic research
+- Automated data preprocessing
+- Comprehensive statistical analysis
+- Interactive data visualizations
 - Supports multiple LLM providers
+
+<hr>
 
 ### ⚙️ Setup Instructions
 
@@ -27,7 +33,7 @@ An AI-powered agentic research assistant that automates topic research, data ana
    1. Clone the repository:
       ```bash
       git clone https://github.com/genieincodebottle/genaicodelab.git
-      cd genaicodelab/agentic_ai/agents/crewai_usecases/research_assistant
+      cd genaicodelab/agentic_ai/agents/crewai_usecases/data_analysis_assistant
       ```
    2. Create a virtual environment:
       ```bash
@@ -38,7 +44,7 @@ An AI-powered agentic research assistant that automates topic research, data ana
       ```bash
       pip install -r requirements.txt
       ```
-   4. Rename `.env.example` to `.env` and update with appropriate values.
+   4. Rename `.env.example` to `.env` and update with appropriate values as per LLM Provider.
       - For **GROQ_API_KEY** follow this -> https://console.groq.com/keys
       - For **OPENAI_API_KEY** follow this -> https://platform.openai.com/api-keys
       - For **GOOGLE_API_KEY** follow this -> https://ai.google.dev/gemini-api/docs/api-key
@@ -51,14 +57,15 @@ To start the application, run:
 ```bash
 streamlit run app.py
 ```
+<br>
+<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/data_analysis_assistant_ui.png" alt="UI"/>
 
-<img src="https://github.com/genieincodebottle/genaicodelab/blob/main/images/research_assistant_ui.png" alt="UI"/>
 <hr>
 
 ### 📖 Usage
 
 1. Select LLM provider and model
-2. Enter a research topic
-3. Select the research type, depth level and specific requirements
-4. Start the research
-5. View insights and download the final report
+2. Upload your dataset (CSV or Excel)
+3. Start the analysis
+4. Explore results through interactive visualizations
+5. Download analysis reports

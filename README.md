@@ -9,24 +9,35 @@
 </div>
 
 <br>
-Repository for all advanced concepts of GenAI with code.
+Repository for all advanced concepts of GenAI with code and Interview Q & A
 
-### 🌟 Overview
+### 💼 Interview Q & A
+
+- [Agentic AI Interview Q & A](./docs/agentic-ai-interview-questions.pdf)
+- [GenAI Generic Interview Q & A](./docs/genai-interview-questions.pdf)
+
+### ☁️ GenAI with Cloud Guides
+
+- [GenAI with Azure](./docs/genai-with-azure-cloud.pdf)
+- [GenAI with AWS](./docs/genai-with-aws-cloud.pdf)
+- [GenAI with VertexAI](./docs/genai-with-vertexai.pdf)
+
+### 🌟 Usecases Links
 
 Each link has a README with setup steps, so you can run it independently.
 
-- #### [Agentic AI](./agentic_ai/)
-   - ##### [AI Workflow](./agentic_ai/ai_workflow/)
-   - ##### [Agents](./agentic_ai/agents/)
-      - ##### [CrewAI Usecases](./agentic_ai/agents/crewai_usecases/)
-      - ##### [LangGraph Usecases](./agentic_ai/agents/langgraph_usecases/)
-      - ##### [Phidata Usecases](./agentic_ai/agents/phidata_usecases/)
-- #### [Cache Augumented Generation](./cache_augumeted_generation/)
-- #### [Your AI Chat Analytics](./your_ai_chat_analytics/)  
-- #### Advanced Agentic-RAG
-- #### Multimodal RAG
-- #### Advanced Prompt Engineering
-- #### Prompt Guard & Prompt Caching
+- [Agentic AI](./agentic_ai/)
+   - [AI Workflow](./agentic_ai/ai_workflow/)
+   - [Agents](./agentic_ai/agents/)
+      - [CrewAI Agentic Usecases](./agentic_ai/agents/crewai_usecases/)
+      - [LangGraph Agentic Usecases](./agentic_ai/agents/langgraph_usecases/)
+      - [Phidata Agentic Usecases](./agentic_ai/agents/phidata_usecases/)
+- [Cache Augumented Generation](./cache_augumeted_generation/)
+- [Your AI Chat Analytics](./your_ai_chat_analytics/)  
+- Advanced Agentic-RAG
+- Multimodal RAG
+- Advanced Prompt Engineering
+- Prompt Guard & Prompt Caching
 - and more ...
 
 ### ⚙️ Setup Instructions

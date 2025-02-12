@@ -1,8 +1,4 @@
 streamlit
-pandas
-numpy
-plotly
 crewai
-scipy
+crewai-tools
 python-dotenv
-xlsxwriter

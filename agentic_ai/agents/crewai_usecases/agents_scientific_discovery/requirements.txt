@@ -1,0 +1,6 @@
+streamlit
+crewai
+crewai-tools
+python-dotenv
+pandas
+plotly

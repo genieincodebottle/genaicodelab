@@ -19,6 +19,7 @@ Cache-Augmented Generation (CAG) addresses these by preloading relevant data int
 model's context, leveraging modern LLMs' extended context windows and caching runtime parameters. 
 This eliminates real-time retrieval during inference, enabling direct response generation.
 
+<img src="images/cag_diagram.png" alt="Cache-Augmented Generation"/>
 <hr>
 
 ### ✨ Advantages of CAG
